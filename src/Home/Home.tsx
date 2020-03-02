@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { APIData, MainPlayerData } from "../Types";
+import Player from "../Player/Player";
 
 export default function Home() {
   const [allPlayers, setAllPlayers] = useState<MainPlayerData[]>([]);
@@ -34,15 +35,39 @@ export default function Home() {
     }
   }
 
+  function renderTwoPlayers() {
+    let uniqueIndices: number[] = [];
+    for (let i = 0; i < 2; i++) {
+      const random = Math.round(Math.random() * allPlayers.length);
+      if (uniqueIndices.indexOf(random) === -1) uniqueIndices.push(random);
+    }
+
+    const playerOne = allPlayers[uniqueIndices[0]];
+    const playerTwo = allPlayers[uniqueIndices[1]];
+
+    return (
+      <section>
+        <Player
+          playerFirstName={playerOne.firstName}
+          playerLastName={playerOne.lastName}
+          url={playerOne.imageUrl}
+        />
+        <Player
+          playerFirstName={playerTwo.firstName}
+          playerLastName={playerTwo.lastName}
+          url={playerTwo.imageUrl}
+        />
+      </section>
+    );
+  }
+
   console.log("PLAYER DATA: ", allPlayers);
 
   return (
-    <ul>
-      {allPlayers.map((player, index) => (
-        <li key={index}>
-          {player.firstName} {player.lastName}
-        </li>
-      ))}
-    </ul>
+    <main>
+      <h1>Guess the player with the highest FanDuel Points Per Game (FPPG)</h1>
+
+      {allPlayers.length && renderTwoPlayers()}
+    </main>
   );
 }
