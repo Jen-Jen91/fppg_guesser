@@ -22,7 +22,8 @@ export default function Home() {
         const data = {
           firstName: player.first_name,
           lastName: player.last_name,
-          imageUrl: player.images.default.url
+          imageUrl: player.images.default.url,
+          fppg: player.fppg
         };
         return data;
       });
@@ -51,11 +52,15 @@ export default function Home() {
           playerFirstName={playerOne.firstName}
           playerLastName={playerOne.lastName}
           url={playerOne.imageUrl}
+          fppg={playerOne.fppg}
+          clickPlayer={fppg => console.log(fppg)}
         />
         <Player
           playerFirstName={playerTwo.firstName}
           playerLastName={playerTwo.lastName}
           url={playerTwo.imageUrl}
+          fppg={playerTwo.fppg}
+          clickPlayer={fppg => console.log(fppg)}
         />
       </section>
     );

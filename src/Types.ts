@@ -77,4 +77,5 @@ export interface MainPlayerData {
   firstName: string;
   lastName: string;
   imageUrl: string;
+  fppg: number;
 }
