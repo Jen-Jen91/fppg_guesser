@@ -1,5 +1,5 @@
 import React from "react";
-import Player from "./Player";
+import Player, { roundOffPoints } from "./Player";
 import renderer from "react-test-renderer";
 import { mount } from "enzyme";
 
@@ -56,4 +56,14 @@ test("Player calls clickPlayer when clicked", () => {
   const div = wrapper.find(".player-container");
   div.simulate("click");
   expect(playerClicked).toBeCalledWith(48);
+});
+
+test("convert number to string with 2 decimal places - round up", () => {
+  const result = roundOffPoints(4.8267);
+  expect(result).toBe("4.83");
+});
+
+test("convert number to string with 2 decimal places - round down", () => {
+  const result = roundOffPoints(4.8237);
+  expect(result).toBe("4.82");
 });
