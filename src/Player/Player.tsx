@@ -6,10 +6,22 @@ export interface PlayerProps {
   url: string;
   fppg: number;
   clickPlayer: (fppg: number) => void;
+  clickDisabled: boolean;
+  showFppg: boolean;
 }
 
 export default function Player(props: PlayerProps) {
-  const { playerFirstName, playerLastName, url, fppg, clickPlayer } = props;
+  const {
+    playerFirstName,
+    playerLastName,
+    url,
+    fppg,
+    clickPlayer,
+    clickDisabled,
+    showFppg
+  } = props;
+
+  console.log("CLICK IS DISABLED?: ", clickDisabled);
 
   return (
     <div onClick={() => clickPlayer(fppg)} className="player-container">
@@ -17,6 +29,7 @@ export default function Player(props: PlayerProps) {
       <p>
         {playerFirstName} {playerLastName}
       </p>
+      {showFppg && <p className="fppg-text">{fppg}</p>}
     </div>
   );
 }

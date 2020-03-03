@@ -5,6 +5,7 @@ import Player from "../Player/Player";
 export default function Home() {
   const [allPlayers, setAllPlayers] = useState<MainPlayerData[]>([]);
   const [showResults, setShowResults] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
   const [playerOne, setPlayerOne] = useState<MainPlayerData>({
     firstName: "",
     lastName: "",
@@ -19,24 +20,17 @@ export default function Home() {
   });
 
   useEffect(() => {
-    console.log("HOME USE EFFECT");
-
     fetchPlayerData();
   }, []);
 
   useEffect(() => {
-    console.log("GET RANDOM PLAYERS: ", allPlayers);
     if (showResults || allPlayers.length < 1) return;
-
-    console.log("GET RANDOM PLAYERS: ", allPlayers);
 
     let uniqueIndices: number[] = [];
     for (let i = 0; i < 2; i++) {
       const random = Math.round(Math.random() * allPlayers.length);
       if (uniqueIndices.indexOf(random) === -1) uniqueIndices.push(random);
     }
-
-    console.log("UNIQUE INDICES: ", uniqueIndices);
 
     setPlayerOne(allPlayers[uniqueIndices[0]]);
     setPlayerTwo(allPlayers[uniqueIndices[1]]);
@@ -67,7 +61,12 @@ export default function Home() {
 
   function playerGuessed(fppg: number) {
     setShowResults(true);
-    console.log("FPPG: ", fppg);
+
+    if (fppg >= playerOne.fppg && fppg >= playerTwo.fppg) {
+      setIsCorrect(true);
+    } else {
+      setIsCorrect(false);
+    }
   }
 
   return (
@@ -75,13 +74,15 @@ export default function Home() {
       <h1>Guess the player with the highest FanDuel Points Per Game (FPPG)</h1>
 
       {allPlayers.length && (
-        <section>
+        <section className="players-container">
           <Player
             playerFirstName={playerOne.firstName}
             playerLastName={playerOne.lastName}
             url={playerOne.imageUrl}
             fppg={playerOne.fppg}
             clickPlayer={playerGuessed}
+            clickDisabled={showResults}
+            showFppg={showResults}
           />
           <Player
             playerFirstName={playerTwo.firstName}
@@ -89,13 +90,15 @@ export default function Home() {
             url={playerTwo.imageUrl}
             fppg={playerTwo.fppg}
             clickPlayer={playerGuessed}
+            clickDisabled={showResults}
+            showFppg={showResults}
           />
         </section>
       )}
 
       {showResults && (
-        <div>
-          <p>CORRECT or INCORRECT</p>
+        <div className="results-container">
+          <p>{isCorrect ? "CORRECT! :)" : "WRONG! :("}</p>
           <button onClick={() => setShowResults(false)} className="next-button">
             NEXT
           </button>
