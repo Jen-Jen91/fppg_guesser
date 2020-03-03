@@ -1,10 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home snapshot test 1`] = `
-<main>
+<main
+  class="home-container"
+>
   <h1>
     Guess the player with the highest FanDuel Points Per Game (FPPG)
   </h1>
+  <h3>
+    Score: 0
+  </h3>
   0
 </main>
 `;

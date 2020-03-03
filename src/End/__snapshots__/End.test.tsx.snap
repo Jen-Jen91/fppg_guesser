@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`End snapshot test 1`] = `
+<main>
+  <h1>
+    Congratulations - you won!
+  </h1>
+  <button
+    class="replay-button"
+  >
+    Replay
+  </button>
+</main>
+`;

@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { APIData, MainPlayerData } from "../Types";
 import Player from "../Player/Player";
+import { RouteComponentProps, withRouter } from "react-router";
 
-export default function Home() {
+export interface ExtendedProps extends RouteComponentProps {}
+
+function Home(props: ExtendedProps) {
   const [allPlayers, setAllPlayers] = useState<MainPlayerData[]>([]);
+  const [score, setScore] = useState(0);
   const [showResults, setShowResults] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [playerOne, setPlayerOne] = useState<MainPlayerData>({
@@ -64,14 +68,27 @@ export default function Home() {
 
     if (fppg >= playerOne.fppg && fppg >= playerTwo.fppg) {
       setIsCorrect(true);
+      updateScore();
     } else {
       setIsCorrect(false);
     }
   }
 
+  function updateScore() {
+    if (score === 9) {
+      setScore(score + 1);
+      console.log("CONGRATULATIONS - YOU'VE WON!");
+      props.history.push("/end");
+    } else {
+      setScore(score + 1);
+    }
+  }
+
   return (
-    <main>
+    <main className="home-container">
       <h1>Guess the player with the highest FanDuel Points Per Game (FPPG)</h1>
+
+      <h3>Score: {score}</h3>
 
       {allPlayers.length && (
         <section className="players-container">
@@ -107,3 +124,5 @@ export default function Home() {
     </main>
   );
 }
+
+export default withRouter(Home);
