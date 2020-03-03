@@ -2,6 +2,7 @@ import React from "react";
 import Home from "./Home";
 import renderer from "react-test-renderer";
 // import { render } from "react-dom";
+// import { shallow, mount } from "enzyme";
 
 // const fakeResponse = [
 //   {
