@@ -104,6 +104,7 @@ function Home(props: ExtendedProps) {
             clickDisabled={showResults}
             showFppg={showResults}
           />
+
           <Player
             playerFirstName={playerTwo.firstName}
             playerLastName={playerTwo.lastName}
@@ -117,11 +118,13 @@ function Home(props: ExtendedProps) {
       )}
 
       {showResults && (
-        <div className="results-container">
-          <p>{isCorrect ? "CORRECT! :)" : "WRONG! :("}</p>
-          <button onClick={() => setShowResults(false)} className="next-button">
-            NEXT
-          </button>
+        <div className="modal">
+          <div className="results-container">
+            <p className="results-text">{isCorrect ? "Correct!" : "Wrong!"}</p>
+            <div onClick={() => setShowResults(false)} className="next-button">
+              <p className="next-text">Next</p>
+            </div>
+          </div>
         </div>
       )}
     </main>
