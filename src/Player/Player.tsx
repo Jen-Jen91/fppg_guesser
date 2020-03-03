@@ -1,6 +1,10 @@
 import React from "react";
 import "./Player.scss";
 
+export function roundOffPoints(points: number) {
+  return points.toFixed(2);
+}
+
 export interface PlayerProps {
   playerFirstName: string;
   playerLastName: string;
@@ -35,7 +39,7 @@ export default function Player(props: PlayerProps) {
       <p className="name">
         {playerFirstName} {playerLastName}
       </p>
-      {showFppg && <p className="fppg">Fppg: {fppg}</p>}
+      {showFppg && <p className="fppg-text">Fppg: {roundOffPoints(fppg)}</p>}
     </div>
   );
 }
