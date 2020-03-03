@@ -1,4 +1,5 @@
 import React from "react";
+import "./Player.scss";
 
 export interface PlayerProps {
   playerFirstName: string;
@@ -25,11 +26,16 @@ export default function Player(props: PlayerProps) {
 
   return (
     <div onClick={() => clickPlayer(fppg)} className="player-container">
-      <img src={url} alt={playerFirstName + " " + playerLastName} />
-      <p>
+      <img
+        src={url}
+        alt={playerFirstName + " " + playerLastName}
+        width={300}
+        height={300}
+      />
+      <p className="name">
         {playerFirstName} {playerLastName}
       </p>
-      {showFppg && <p className="fppg-text">{fppg}</p>}
+      {showFppg && <p className="fppg">Fppg: {fppg}</p>}
     </div>
   );
 }

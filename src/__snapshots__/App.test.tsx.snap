@@ -4,10 +4,14 @@ exports[`App snapshot test 1`] = `
 <main
   className="home-container"
 >
-  <h1>
+  <h1
+    className="title"
+  >
     Guess the player with the highest FanDuel Points Per Game (FPPG)
   </h1>
-  <h3>
+  <h3
+    className="score"
+  >
     Score: 
     0
   </h3>

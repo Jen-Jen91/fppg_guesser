@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { APIData, MainPlayerData } from "../Types";
 import Player from "../Player/Player";
 import { RouteComponentProps, withRouter } from "react-router";
+import "./Home.scss";
 
 export interface ExtendedProps extends RouteComponentProps {}
 
@@ -86,9 +87,11 @@ function Home(props: ExtendedProps) {
 
   return (
     <main className="home-container">
-      <h1>Guess the player with the highest FanDuel Points Per Game (FPPG)</h1>
+      <h1 className="title">
+        Guess the player with the highest FanDuel Points Per Game (FPPG)
+      </h1>
 
-      <h3>Score: {score}</h3>
+      <h3 className="score">Score: {score}</h3>
 
       {allPlayers.length && (
         <section className="players-container">
