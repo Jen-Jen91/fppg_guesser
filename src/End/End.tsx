@@ -5,7 +5,7 @@ import Button from "../Common/Button/Button";
 
 export interface ExtendedProps extends RouteComponentProps {}
 
-function End(props: ExtendedProps) {
+const End = (props: ExtendedProps) => {
   return (
     <main className="end-container">
       <h1 className="end-title">Congratulations, you won!</h1>
@@ -22,6 +22,6 @@ function End(props: ExtendedProps) {
       </Button>
     </main>
   );
-}
+};
 
 export default withRouter(End);

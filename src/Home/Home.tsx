@@ -1,30 +1,29 @@
 import React, { useEffect, useState } from "react";
-import { APIData, MainPlayerData } from "../Common/Types";
-import Player from "../Player/Player";
 import { RouteComponentProps, withRouter } from "react-router";
-import "./Home.scss";
+import { APIData, MainPlayerData } from "../Common/Types";
+import Player from "../Common/Player/Player";
 import Button from "../Common/Button/Button";
 import Modal from "../Common/Modal/Modal";
+import "./Home.scss";
 
 export interface ExtendedProps extends RouteComponentProps {}
 
-function Home(props: ExtendedProps) {
-  const [allPlayers, setAllPlayers] = useState<MainPlayerData[]>([]);
+const Home = (props: ExtendedProps) => {
   const [score, setScore] = useState(0);
-  const [showResults, setShowResults] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [playerOne, setPlayerOne] = useState<MainPlayerData>({
+  const [showResults, setShowResults] = useState(false);
+  const [allPlayers, setAllPlayers] = useState<MainPlayerData[]>([]);
+
+  const player: MainPlayerData = {
     firstName: "",
     lastName: "",
     imageUrl: "",
     fppg: 0
-  });
-  const [playerTwo, setPlayerTwo] = useState<MainPlayerData>({
-    firstName: "",
-    lastName: "",
-    imageUrl: "",
-    fppg: 0
-  });
+  };
+
+  const [playerOne, setPlayerOne] = useState<MainPlayerData>(player);
+  const [playerTwo, setPlayerTwo] = useState<MainPlayerData>(player);
 
   useEffect(() => {
     fetchPlayerData();
@@ -55,7 +54,7 @@ function Home(props: ExtendedProps) {
     setPlayerTwo(allPlayers[uniqueIndices[1]]);
   }, [allPlayers, showResults]);
 
-  async function fetchPlayerData() {
+  const fetchPlayerData = async () => {
     try {
       const resp = await fetch(
         "https://gist.githubusercontent.com/liamjdouglas/bb40ee8721f1a9313c22c6ea0851a105/raw/6b6fc89d55ebe4d9b05c1469349af33651d7e7f1/Player.json"
@@ -63,7 +62,7 @@ function Home(props: ExtendedProps) {
       const allData: APIData = await resp.json();
 
       const playersData: MainPlayerData[] = allData.players.map(player => {
-        const data = {
+        const data: MainPlayerData = {
           firstName: player.first_name || "",
           lastName: player.last_name || "",
           imageUrl: player.images.default.url || "",
@@ -73,12 +72,13 @@ function Home(props: ExtendedProps) {
       });
 
       setAllPlayers(playersData);
+      setLoading(false);
     } catch (e) {
       console.error(e);
     }
-  }
+  };
 
-  function playerGuessed(fppg: number) {
+  const playerGuessed = (fppg: number) => {
     setShowResults(true);
 
     if (fppg >= playerOne.fppg && fppg >= playerTwo.fppg) {
@@ -87,16 +87,16 @@ function Home(props: ExtendedProps) {
     } else {
       setIsCorrect(false);
     }
-  }
+  };
 
-  function updateScore() {
+  const updateScore = () => {
     if (score === 9) {
       setScore(score + 1);
       props.history.push("/end");
     } else {
       setScore(score + 1);
     }
-  }
+  };
 
   return (
     <main className="home-container">
@@ -106,7 +106,9 @@ function Home(props: ExtendedProps) {
 
       <h3 className="score">Score: {score}</h3>
 
-      {allPlayers.length && (
+      {loading || allPlayers.length === 0 ? (
+        <div className="loader" />
+      ) : (
         <section className="players-container">
           <Player
             playerFirstName={playerOne.firstName}
@@ -140,6 +142,6 @@ function Home(props: ExtendedProps) {
       )}
     </main>
   );
-}
+};
 
 export default withRouter(Home);

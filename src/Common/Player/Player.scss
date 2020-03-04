@@ -1,4 +1,4 @@
-@import "../Common/variables.scss";
+@import "../variables.scss";
 
 .player-container {
   @include flex-column(center, flex-start);
@@ -13,7 +13,7 @@
   }
 }
 
-.name {
+.name-text {
   margin: 15px 0;
 
   font-size: 1.5rem;
@@ -22,7 +22,7 @@
 }
 
 .fppg-text {
-  @extend .name;
+  @extend .name-text;
 
   margin: 0 0 10px 0;
 
