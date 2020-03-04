@@ -10,9 +10,8 @@ export interface PlayerProps {
   playerLastName: string;
   url: string;
   fppg: number;
-  clickPlayer: (fppg: number) => void;
-  clickDisabled: boolean;
   showFppg: boolean;
+  clickPlayer: (fppg: number) => void;
 }
 
 export default function Player(props: PlayerProps) {
@@ -21,12 +20,9 @@ export default function Player(props: PlayerProps) {
     playerLastName,
     url,
     fppg,
-    clickPlayer,
-    clickDisabled,
-    showFppg
+    showFppg,
+    clickPlayer
   } = props;
-
-  console.log("CLICK IS DISABLED?: ", clickDisabled);
 
   return (
     <div onClick={() => clickPlayer(fppg)} className="player-container">

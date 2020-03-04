@@ -1,23 +1,24 @@
+@import "../Common/variables.scss";
+
 .end-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-column(center, flex-start);
 
   height: 100vh;
 
-  background-color: #0090ff;
+  background-color: $light-blue;
 }
 
 .end-title {
-  background-color: #1f375b;
+  @include flex-column(center, center);
+
+  margin: 50px 0 0 0;
   width: 100vw;
   height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
+  background-color: $dark-blue;
+
   text-align: center;
-  color: #ffffff;
-  margin: 50px 0 0 0;
+  color: $white;
 }
 
 .end-subtitle {
@@ -27,20 +28,17 @@
 }
 
 .replay-button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include flex-column(center, center);
 
   border-radius: 20px;
-  box-shadow: 0 5px #aaadb3;
+  box-shadow: 0 5px $light-grey;
   min-width: 100px;
   width: 10%;
   height: 30px;
   padding: 5px 0;
 
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: $white;
 
   &:hover {
     opacity: 0.9;
@@ -48,13 +46,14 @@
 
   &:active {
     transform: translateY(4px);
-    box-shadow: 0 2px #83858a;
+    box-shadow: 0 2px $dark-grey;
   }
 }
 
 .replay-text {
-  color: #1f375b;
   margin: 0;
+
   font-size: 1.1rem;
   font-weight: bold;
+  color: $dark-blue;
 }

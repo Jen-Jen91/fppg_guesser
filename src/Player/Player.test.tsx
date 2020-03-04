@@ -12,7 +12,6 @@ test("Player snapshot test", () => {
         url=""
         fppg={48}
         clickPlayer={() => console.log("Click")}
-        clickDisabled={false}
         showFppg={false}
       />
     )
@@ -29,15 +28,12 @@ test("Player renders fppg when true", () => {
       url=""
       fppg={48}
       clickPlayer={() => console.log("Click")}
-      clickDisabled={false}
       showFppg={true}
     />
   );
 
   expect(wrapper.find(".fppg-text")).toHaveLength(1);
 });
-
-// TODO: Test click disabled
 
 test("Player calls clickPlayer when clicked", () => {
   const playerClicked = jest.fn();
@@ -48,7 +44,6 @@ test("Player calls clickPlayer when clicked", () => {
       url=""
       fppg={48}
       clickPlayer={playerClicked}
-      clickDisabled={false}
       showFppg={false}
     />
   );

@@ -1,15 +1,15 @@
-.player-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+@import "../Common/variables.scss";
 
-  border: solid 5px #0090ff;
+.player-container {
+  @include flex-column(center, flex-start);
+
+  border: solid 5px $light-blue;
   border-radius: 10px;
 
   cursor: pointer;
 
   &:hover {
-    background-color: #0090ff;
+    background-color: $light-blue;
   }
 }
 
@@ -18,10 +18,10 @@
 
   font-size: 1.5rem;
   font-weight: bold;
-  color: #1f375b;
+  color: $dark-blue;
 }
 
-.fppg {
+.fppg-text {
   @extend .name;
 
   margin: 0 0 10px 0;

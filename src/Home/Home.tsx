@@ -103,7 +103,6 @@ function Home(props: ExtendedProps) {
             url={playerOne.imageUrl}
             fppg={playerOne.fppg}
             clickPlayer={playerGuessed}
-            clickDisabled={showResults}
             showFppg={showResults}
           />
 
@@ -113,7 +112,6 @@ function Home(props: ExtendedProps) {
             url={playerTwo.imageUrl}
             fppg={playerTwo.fppg}
             clickPlayer={playerGuessed}
-            clickDisabled={showResults}
             showFppg={showResults}
           />
         </section>

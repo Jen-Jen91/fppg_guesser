@@ -1,23 +1,21 @@
+@import "../Common/variables.scss";
+
 .home-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-column(center, flex-start);
 
   height: 100vh;
 }
 
 .title {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-column(center, center);
 
   margin: 0;
   width: 100vw;
   height: 150px;
 
-  background-color: #1f375b;
+  background-color: $dark-blue;
 
-  color: #ffffff;
+  color: $white;
 }
 
 .players-container {
@@ -30,49 +28,45 @@
 }
 
 .score {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-column(center, center);
 
   margin: 0 0 50px 0;
-  border: solid 2px #1f375b;
+  border: solid 2px $dark-blue;
   border-top: 0px;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
   width: 300px;
   height: 50px;
 
-  background-color: #ffffff;
+  background-color: $white;
 
-  color: #1f375b;
+  color: $dark-blue;
 }
 
 .results-container {
+  @include flex-column(center, space-evenly);
+
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-
-  border: solid 2px #1f375b;
+  border: solid 2px $dark-blue;
   border-radius: 10px;
   width: 200px;
   height: 200px;
 
-  background-color: #ffffff;
+  background-color: $white;
 }
 
 .results-text {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #1f375b;
+  color: $dark-blue;
 }
 
 .next-text {
   margin: 0;
-  color: #ffffff;
+
+  color: $white;
 }

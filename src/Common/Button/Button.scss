@@ -1,16 +1,15 @@
-.button {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+@import "../variables.scss";
 
-  box-shadow: 0 5px #aaadb3;
+.button {
+  @include flex-column(center, center);
+
+  box-shadow: 0 5px $light-grey;
   border-radius: 20px;
   min-width: 100px;
   height: 30px;
 
   cursor: pointer;
-  background-color: #1f375b;
+  background-color: $dark-blue;
 
   &:hover {
     opacity: 0.9;
@@ -18,6 +17,6 @@
 
   &:active {
     transform: translateY(4px);
-    box-shadow: 0 2px #83858a;
+    box-shadow: 0 2px $dark-grey;
   }
 }
