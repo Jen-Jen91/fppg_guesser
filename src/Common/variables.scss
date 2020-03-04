@@ -5,6 +5,10 @@ $light-grey: #aaadb3;
 $dark-grey: #83858a;
 $white: #ffffff;
 
+// BREAKPOINTS:
+$sm: 550px;
+$md: 800px;
+
 // MIXINS:
 @mixin flex-column($align, $justify) {
   display: flex;
