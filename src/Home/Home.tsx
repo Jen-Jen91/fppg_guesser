@@ -31,12 +31,24 @@ function Home(props: ExtendedProps) {
   }, []);
 
   useEffect(() => {
-    if (showResults || allPlayers.length < 1) return;
+    if (showResults || allPlayers.length <= 1) return;
 
     let uniqueIndices: number[] = [];
-    for (let i = 0; i < 2; i++) {
-      const random = Math.round(Math.random() * allPlayers.length);
-      if (uniqueIndices.indexOf(random) === -1) uniqueIndices.push(random);
+
+    if (allPlayers.length === 2) {
+      uniqueIndices = [0, 1];
+    } else {
+      let i = uniqueIndices.length;
+
+      while (i < 2) {
+        const max = allPlayers.length - 1;
+        const random = Math.round(Math.random() * max);
+
+        if (!uniqueIndices.includes(random)) {
+          uniqueIndices.push(random);
+          i++;
+        }
+      }
     }
 
     setPlayerOne(allPlayers[uniqueIndices[0]]);
@@ -52,10 +64,10 @@ function Home(props: ExtendedProps) {
 
       const playersData: MainPlayerData[] = allData.players.map(player => {
         const data = {
-          firstName: player.first_name,
-          lastName: player.last_name,
-          imageUrl: player.images.default.url,
-          fppg: player.fppg
+          firstName: player.first_name || "",
+          lastName: player.last_name || "",
+          imageUrl: player.images.default.url || "",
+          fppg: player.fppg || 0
         };
         return data;
       });
@@ -80,7 +92,6 @@ function Home(props: ExtendedProps) {
   function updateScore() {
     if (score === 9) {
       setScore(score + 1);
-      console.log("CONGRATULATIONS - YOU'VE WON!");
       props.history.push("/end");
     } else {
       setScore(score + 1);
