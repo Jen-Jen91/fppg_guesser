@@ -1,6 +1,7 @@
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import "./End.scss";
+import Button from "../Common/Button/Button";
 
 export interface ExtendedProps extends RouteComponentProps {}
 
@@ -12,9 +13,13 @@ function End(props: ExtendedProps) {
         You guessed 10 players correctly.
         <br /> Click below to play again.
       </h3>
-      <div onClick={() => props.history.push("/")} className="replay-button">
+
+      <Button
+        handleClick={() => props.history.push("/")}
+        buttonStyle="replay-button"
+      >
         <p className="replay-text">Replay</p>
-      </div>
+      </Button>
     </main>
   );
 }

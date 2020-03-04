@@ -27,27 +27,28 @@
 }
 
 .replay-button {
-  background-color: #ffffff;
-  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 20px;
+  box-shadow: 0 5px #aaadb3;
   min-width: 100px;
   width: 10%;
   height: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
+  padding: 5px 0;
+
   cursor: pointer;
-  box-shadow: 0 5px #999;
+  background-color: #ffffff;
 
   &:hover {
-    background-color: #ffffff;
     opacity: 0.9;
   }
 
   &:active {
-    box-shadow: 0 2px #666;
     transform: translateY(4px);
+    box-shadow: 0 2px #83858a;
   }
 }
 

@@ -80,29 +80,6 @@
   font-weight: bold;
 }
 
-.next-button {
-  background-color: #1f375b;
-  width: 70%;
-  height: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-  cursor: pointer;
-  box-shadow: 0 5px #999;
-
-  &:hover {
-    background-color: #1f375b;
-    opacity: 0.9;
-  }
-
-  &:active {
-    box-shadow: 0 2px #666;
-    transform: translateY(4px);
-  }
-}
-
 .next-text {
   color: #ffffff;
   margin: 0;

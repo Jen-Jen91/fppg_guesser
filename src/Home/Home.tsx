@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { APIData, MainPlayerData } from "../Types";
+import { APIData, MainPlayerData } from "../Common/Types";
 import Player from "../Player/Player";
 import { RouteComponentProps, withRouter } from "react-router";
 import "./Home.scss";
+import Button from "../Common/Button/Button";
 
 export interface ExtendedProps extends RouteComponentProps {}
 
@@ -121,9 +122,9 @@ function Home(props: ExtendedProps) {
         <div className="modal">
           <div className="results-container">
             <p className="results-text">{isCorrect ? "Correct!" : "Wrong!"}</p>
-            <div onClick={() => setShowResults(false)} className="next-button">
+            <Button handleClick={() => setShowResults(false)}>
               <p className="next-text">Next</p>
-            </div>
+            </Button>
           </div>
         </div>
       )}
