@@ -4,6 +4,7 @@ import Player from "../Player/Player";
 import { RouteComponentProps, withRouter } from "react-router";
 import "./Home.scss";
 import Button from "../Common/Button/Button";
+import Modal from "../Common/Modal/Modal";
 
 export interface ExtendedProps extends RouteComponentProps {}
 
@@ -119,14 +120,14 @@ function Home(props: ExtendedProps) {
       )}
 
       {showResults && (
-        <div className="modal">
+        <Modal>
           <div className="results-container">
             <p className="results-text">{isCorrect ? "Correct!" : "Wrong!"}</p>
             <Button handleClick={() => setShowResults(false)}>
               <p className="next-text">Next</p>
             </Button>
           </div>
-        </div>
+        </Modal>
       )}
     </main>
   );
