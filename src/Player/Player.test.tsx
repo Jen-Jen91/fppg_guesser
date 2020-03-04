@@ -34,7 +34,7 @@ test("Player renders fppg when true", () => {
     />
   );
 
-  expect(wrapper.find(".fppg")).toHaveLength(1);
+  expect(wrapper.find(".fppg-text")).toHaveLength(1);
 });
 
 // TODO: Test click disabled

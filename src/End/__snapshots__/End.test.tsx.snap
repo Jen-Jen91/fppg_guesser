@@ -1,14 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`End snapshot test 1`] = `
-<main>
-  <h1>
-    Congratulations - you won!
+<main
+  class="end-container"
+>
+  <h1
+    class="end-title"
+  >
+    Congratulations, you won!
   </h1>
-  <button
+  <h3
+    class="end-subtitle"
+  >
+    You guessed 10 players correctly.
+    <br />
+     Click below to play again.
+  </h3>
+  <div
     class="replay-button"
   >
-    Replay
-  </button>
+    <p
+      class="replay-text"
+    >
+      Replay
+    </p>
+  </div>
 </main>
 `;
