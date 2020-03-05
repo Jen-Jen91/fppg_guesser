@@ -1,6 +1,6 @@
 import React from "react";
-import "./Player.scss";
 import { roundOffPoints } from "../helpers";
+import "./Player.scss";
 
 export interface PlayerProps {
   playerFirstName: string;

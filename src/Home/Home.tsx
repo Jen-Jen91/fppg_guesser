@@ -25,15 +25,18 @@ const Home = (props: ExtendedProps) => {
   const [playerOne, setPlayerOne] = useState<MainPlayerData>(player);
   const [playerTwo, setPlayerTwo] = useState<MainPlayerData>(player);
 
+  // Fetch player data from API
   useEffect(() => {
     fetchPlayerData();
   }, []);
 
+  // Set random playerOne and playerTwo (if data available and not showing results)
   useEffect(() => {
     if (showResults || allPlayers.length <= 1) return;
 
     let uniqueIndices: number[] = [];
 
+    // Only show the same two players if only two players available
     if (allPlayers.length === 2) {
       uniqueIndices = [0, 1];
     } else {
@@ -78,6 +81,7 @@ const Home = (props: ExtendedProps) => {
     }
   };
 
+  // Show results after a player is clicked and update score if fppg is higher
   const playerGuessed = (fppg: number) => {
     setShowResults(true);
 
@@ -89,13 +93,10 @@ const Home = (props: ExtendedProps) => {
     }
   };
 
+  // Increase score and end game if score reaches 10
   const updateScore = () => {
-    if (score === 9) {
-      setScore(score + 1);
-      props.history.push("/end");
-    } else {
-      setScore(score + 1);
-    }
+    setScore(score + 1);
+    if (score === 9) props.history.push("/end");
   };
 
   return (
@@ -106,7 +107,7 @@ const Home = (props: ExtendedProps) => {
 
       <h3 className="score">Score: {score}</h3>
 
-      {loading || allPlayers.length === 0 ? (
+      {loading ? (
         <div className="loader" />
       ) : (
         <section className="players-container">

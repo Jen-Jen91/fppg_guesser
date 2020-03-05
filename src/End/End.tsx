@@ -1,7 +1,7 @@
 import React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
-import "./End.scss";
 import Button from "../Common/Button/Button";
+import "./End.scss";
 
 export interface ExtendedProps extends RouteComponentProps {}
 
